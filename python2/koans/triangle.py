@@ -18,8 +18,15 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
-    # DELETE 'PASS' AND WRITE THIS CODE
-    pass
+    #Raises TriangleError if the given side lengths are invalid
+
+    if (a <= 0 or b <= 0 or c <= 0) or ( a > (b+c) or b > (a+c) or c > (a+b) ) : #one of the sides is greater than the sum of the lengths of the other two sides
+        raise TriangleError
+    
+    mySetLength = len({a,b,c})
+    if mySetLength == 3: return 'scalene'
+    elif mySetLength == 2: return 'isosceles'
+    else : return 'equilateral'
 
 
 # Error class used in part 2.  No need to change this code.
