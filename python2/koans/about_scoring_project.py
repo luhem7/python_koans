@@ -34,8 +34,22 @@ from runner.koan import *
 # Your goal is to write the score method.
 
 def score(dice):
-    # You need to write this method
-    pass
+    result = 0
+    
+    counts = [dice.count(x) for x in range(1,7)]
+    print 'counts for ',dice,' ',counts
+    
+    #For the ones
+    result += (counts[0] / 3)*1000 + (counts[0] % 3)*100
+    
+    #For any other sets of 3
+    for x in range(2,7):
+        result += (counts[x-1]/3)*x*100
+        
+    #For straggling fives
+    result += (counts[4] % 3)*50
+    
+    return result
 
 
 class AboutScoringProject(Koan):
